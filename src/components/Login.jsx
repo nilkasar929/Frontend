@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Dashboard from './Dashboard';
 
 function Login() {
   const [gmail, setEmail] = useState('');
@@ -13,6 +14,12 @@ function Login() {
       password: password
     };
 
+    const userToken = localStorage.getItem('userToken');
+    console.log(userToken )
+    if (userToken) {
+       alert("You are already log in");
+        return;
+    }
 
     try {
       const response = await fetch(url, {
@@ -26,12 +33,14 @@ function Login() {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      else{
-        alert('login succesful')
-      }
+      
+      alert('login succesful')
+      {<Dashboard/>}
+      
       const responseData = await response.json();
-      console.log('Success:', responseData);
-
+      const token = responseData.token
+      localStorage.setItem('userToken', token);
+ 
     } catch (error) {
       console.error('Error:', error);
     }
@@ -49,7 +58,7 @@ function Login() {
           placeholder='Enter Username here' 
           className='form-control'
         />
-        <br></br>
+        <br />
         <input 
           type='password' 
           value={password} 
@@ -57,7 +66,7 @@ function Login() {
           placeholder='Enter Password here' 
           className='form-control'
         />
-        <br></br>
+        <br />
         <input type='submit' id='submit' className='btn btn-dark'/>
         
         <p>New here <a href="/signup">Sign up</a></p>

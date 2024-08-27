@@ -36,6 +36,7 @@ function Register() {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       else{
+        
         alert('Register succesfully')
       }
       const responseData = await response.json();
