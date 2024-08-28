@@ -21,7 +21,7 @@ function Register() {
       role:role
     };
 
-    console.log(data);
+   
 
     try {
       const response = await fetch(url, {
