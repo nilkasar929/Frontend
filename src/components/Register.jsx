@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import image from '../images/login.jpg'
 
 function Register() {
   
@@ -48,25 +48,49 @@ function Register() {
   };
 
   return (
+    <>
+    
     <div className='container'>
+      <div className='row align-items-start'><div className='col-md-2'></div>
+       <div className='col-md-7'>
+        <div className='row container1'>
+          <div className='col-md-6 '>
+            <img className='login-image' src={image} alt="" />
+          </div>
+
+          <div className='col-md-6 line'><div className='board'>
+          
       <form onSubmit={submitFunc}>
           <h2>Register here</h2>
-        <input type='text' id='name' value={name} onChange={(e)=>setName(e.target.value)} placeholder='Enter your name here'className='form-control'/>
+        <input type='text' id='name' value={name} onChange={(e)=>setName(e.target.value)} placeholder='Enter your name here'className='form-control'required/>
         <br />
-        <input type='email' id='email'  value={gmail}  onChange={(e) => setEmail(e.target.value)}  placeholder='Enter Username here'  className='form-control'/>
+        <input type='email' id='email'  value={gmail}  onChange={(e) => setEmail(e.target.value)}  placeholder='Enter Username here'  className='form-control'required/>
         <br />
-        <input type='text' id='asignHours' value={asignHours} onChange={(e)=>setAsignHours(e.target.value)} placeholder='Enter Asign hours' className='form-control'/>
+        <input type='text' id='asignHours' value={asignHours} onChange={(e)=>setAsignHours(e.target.value)} placeholder='Enter Asign hours' className='form-control'required />
         <br />
-        <input type='role' id='role' value={role} onChange={(e)=>setRole(e.target.value)} placeholder='Enter your role'className='form-control'/>
+        <input type='role' id='role' value={role} onChange={(e)=>setRole(e.target.value)} placeholder='Enter your role'className='form-control'required/>
         <br />
-        <input type='password' value={password}  onChange={(e) => setPassword(e.target.value)} placeholder='Enter Password here'className='form-control'/>
+        <input type='password' value={password}  onChange={(e) => setPassword(e.target.value)} placeholder='Enter Password here'className='form-control'required/>
         <br />
-        <input type='submit' id='submit' className='btn btn-dark'/>
-        <br />
-        <p>Already signup <a href="/">Login here</a></p>
+        <div className='row submit'> 
+          <div className='col-md-3'>
+          <input  type='submit' id='submit' className='btn btn-dark'/>
+          </div>
+
+           <div className='col-md-3'><a href="/"><input type="button" id='login' className='btn btn-primary' value='Sign in'/></a></div>
+           
+           </div>
         
       </form>
    </div>
+    </div></div>
+        </div>
+      </div>
+      </div>
+      
+    
+    
+    </>
   )
 }
 
